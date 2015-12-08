@@ -15,7 +15,7 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'input',
       name: 'name',
-      message: 'The model name:'
+      message: 'Enter the collection name:'
     }];
 
     this.prompt(prompts, function(props) {
@@ -34,7 +34,7 @@ module.exports = yeoman.generators.Base.extend({
     var prompts = [{
       type: 'input',
       name: 'key',
-      message: 'Enter a ' + chalk.green('key') + ' for the object: (leave empty to end)'
+      message: 'Enter a ' + chalk.green('key') + ' for the object:'
     }, {
       type: 'list',
       name: 'type',
