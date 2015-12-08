@@ -41,5 +41,13 @@ module.exports = yeoman.generators.Base.extend({
     // Edit
     this.fs.copyTpl(this.templatePath('view_edit.html'), this.destinationPath(destPath + '_edit.html'), content);
     this.fs.copyTpl(this.templatePath('view_edit.js'), this.destinationPath(destPath + '_edit.js'), content);
+
+    // Index
+    this.fs.copyTpl(this.templatePath('view_index.html'), this.destinationPath(destPath + '_index.html'), content);
+    this.fs.copyTpl(this.templatePath('view_index.js'), this.destinationPath(destPath + '_index.js'), content);
+
+    // Show
+    this.fs.copyTpl(this.templatePath('view_show.html'), this.destinationPath(destPath + '_show.html'), content);
+    this.fs.copyTpl(this.templatePath('view_show.js'), this.destinationPath(destPath + '_show.js'), content);
   }
 });
