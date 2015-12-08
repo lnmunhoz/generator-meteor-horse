@@ -79,12 +79,13 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    this.fs.copyTpl(
-      this.templatePath('model.js'),
-      this.destinationPath('app/lib/models/' + this.props.name + '.js'), {
-        nameCapitalized: this.props.name[0].toUpperCase() + this.props.name.slice(1),
-        name: this.props.name,
-        keys: this.props.keys
-      });
+    var collectionName = this.props.name;
+    var content = {
+      collectionName: collectionName,
+      collectionNameCapitalized: collectionName[0].toUpperCase() + collectionName.slice(1),
+      keys: this.props.keys
+    };
+
+    this.fs.copyTpl(this.templatePath('model.js'), this.destinationPath('app/lib/models/' + this.props.name + '.js'), content);
   }
 });
