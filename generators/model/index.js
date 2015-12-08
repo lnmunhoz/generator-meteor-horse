@@ -57,6 +57,14 @@ module.exports = yeoman.generators.Base.extend({
       when: function(answers) {
         return answers.key;
       }
+    }, {
+      type: 'confirm',
+      name: 'optional',
+      message: 'This field is optional?',
+      default: false,
+      when: function(answers) {
+        return answers.key;
+      }
     }];
 
     this.props.keys = [];
@@ -66,7 +74,8 @@ module.exports = yeoman.generators.Base.extend({
         if (props.key) {
           this.props.keys.push({
             name: props.key,
-            type: props.type
+            type: props.type,
+            optional: props.optional
           });
           ask.call(this);
         } else {

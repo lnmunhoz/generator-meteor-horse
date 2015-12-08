@@ -3,7 +3,10 @@
 Schemas.<%= collectionNameCapitalized %> = new SimpleSchema({
   <% keys.forEach(function(key){ %>
     <%= key.name %>: {
-      type: <%= key.type %>
+      type: <%= key.type %>,
+    <% if (key.optional){ %>
+      optional: true
+    <% } %>
     },
   <% }) %>
  });
