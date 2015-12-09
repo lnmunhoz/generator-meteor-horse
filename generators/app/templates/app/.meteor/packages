@@ -21,6 +21,11 @@ insecure                # Allow all DB writes from clients (for prototyping)
 
 kadira:flow-router
 kadira:blaze-layout
-
 aldeed:autoform
+aldeed:collection2
+aldeed:simple-schema
+meteorhacks:subs-manager
+mdg:validated-method
+dburles:collection-helpers
+
 
