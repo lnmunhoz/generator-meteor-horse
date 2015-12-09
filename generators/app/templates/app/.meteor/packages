@@ -19,13 +19,23 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 autopublish             # Publish all data to the clients (for prototyping)
 insecure                # Allow all DB writes from clients (for prototyping)
 
-kadira:flow-router
-kadira:blaze-layout
-aldeed:autoform
-aldeed:collection2
-aldeed:simple-schema
-meteorhacks:subs-manager
+
+kadira:flow-router      # https://github.com/kadirahq/flow-router
+kadira:blaze-layout     # https://github.com/kadirahq/blaze-layout
+aldeed:autoform         # https://github.com/aldeed/meteor-autoform
+aldeed:collection2      # https://github.com/aldeed/meteor-collection2
+aldeed:simple-schema    # https://github.com/aldeed/meteor-simple-schema
+aldeed:delete-button    # https://github.com/aldeed/meteor-delete-button
+aldeed:tabular          # https://github.com/aldeed/meteor-tabular
+
+meteorhacks:subs-manager  
 mdg:validated-method
 dburles:collection-helpers
+ahref:flow-router-breadcrumb
+matb33:collection-hooks
+kevohagan:sweetalert
+sacha:spin
+tap:i18n
+
 
 
