@@ -2,7 +2,7 @@ var <%= collectionName %>SubsManager = new SubsManager();
 
 var <%= collectionName %>Routes = FlowRouter.group({
   prefix: '/<%= collectionName %>',
-  name: '<%= collectionName %>',
+  name: '<%= collectionName %>'
 });
 
 <%= collectionName %>Routes.route('/', {
