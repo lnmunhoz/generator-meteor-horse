@@ -1,6 +1,6 @@
-<%= collectionNameCapitalized %> = new Mongo.Collection('<%= collectionName %>');
+<%= nameCapitalized %> = new Mongo.Collection('<%= name %>');
 
-Schemas.<%= collectionNameCapitalized %> = new SimpleSchema({
+Schemas.<%= nameSingularCapitalized %> = new SimpleSchema({
   <% keys.forEach(function(key){ %>
     <%= key.name %>: {
       type: <%= key.type %>,
@@ -11,4 +11,4 @@ Schemas.<%= collectionNameCapitalized %> = new SimpleSchema({
   <% }) %>
  });
 
-<%= collectionNameCapitalized %>.attachSchema(Schemas.<%= collectionNameCapitalized %>);
+<%= nameCapitalized %>.attachSchema(Schemas.<%= nameSingularCapitalized %>);

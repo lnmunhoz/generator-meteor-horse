@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var pluralize = require('pluralize');
 
 module.exports = yeoman.generators.Base.extend({
   prompting: function() {
@@ -20,9 +21,9 @@ module.exports = yeoman.generators.Base.extend({
 
     this.prompt(prompts, function(props) {
       this.props = props;
-      // To access props later use this.props.someOption;
 
-      this.props.name = this.props.name.toLowerCase();
+      // Asserts lowercase and plural name
+      this.props.name = pluralize(this.props.name.toLowerCase());
 
       done();
     }.bind(this));
@@ -88,10 +89,13 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    var collectionName = this.props.name;
+    var name = this.props.name;
+    var nameCapitalized = name[0].toUpperCase() + name.slice(1);
+    var nameSingularCapitalized = pluralize(nameCapitalized, 1);
     var content = {
-      collectionName: collectionName,
-      collectionNameCapitalized: collectionName[0].toUpperCase() + collectionName.slice(1),
+      name: name,
+      nameCapitalized: nameCapitalized,
+      nameSingularCapitalized: nameSingularCapitalized,
       keys: this.props.keys
     };
 
