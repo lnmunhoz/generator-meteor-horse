@@ -2,9 +2,11 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var ncp = require('ncp').ncp;
+
 
 module.exports = yeoman.generators.Base.extend({
-  prompting: function () {
+  prompting: function() {
     var done = this.async();
 
     // Have Yeoman greet the user.
@@ -12,29 +14,17 @@ module.exports = yeoman.generators.Base.extend({
       'Welcome to the primo ' + chalk.red('generator-meteor-horse') + ' generator!'
     ));
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
-
-      done();
-    }.bind(this));
+    done();
   },
 
-  writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  },
-
-  install: function () {
-    this.installDependencies();
+  writing: function() {
+    var rootPath = this.destinationRoot() + '/app';
+    var templatePath = this.sourceRoot() + '/app';
+    ncp(templatePath, rootPath, function(err) {
+      if (err) {
+        return console.error(err);
+      }
+      console.log('done!');
+    });
   }
 });
