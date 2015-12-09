@@ -1,4 +1,4 @@
-var <%= collectionNameCapitalized %>SubsManager = new SubsManager();
+var <%= collectionName %>SubsManager = new SubsManager();
 
 var <%= collectionName %>Routes = FlowRouter.group({
   prefix: '/<%= collectionName %>',
@@ -7,7 +7,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
 
 <%= collectionName %>Routes.route('/', {
   name: '<%= collectionName %>.index',
-  action: function() {
+  action() {
     BlazeLayout.render('defaultLayout', {
       content: '<%= collectionName %>Index'
     });
@@ -16,7 +16,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
 
 <%= collectionName %>Routes.route('/add', {
   name: '<%= collectionName %>.add',
-  action: function() {
+  action() {
     BlazeLayout.render('defaultLayout', {
       content: '<%= collectionName %>Add'
     });
@@ -26,9 +26,9 @@ var <%= collectionName %>Routes = FlowRouter.group({
 <%= collectionName %>Routes.route('/:id/show', {
   name: '<%= collectionName %>.show',
   subscriptions: function(params) {
-    this.register('<%= collectionName %>', <%= collectionNameCapitalized %>SubsManager.subscribe('<%= collectionName %>', params.id));
+    this.register('<%= collectionName %>', <%= collectionName %>SubsManager.subscribe('<%= collectionName %>', params.id));
   },
-  action: function() {
+  action() {
     BlazeLayout.render('defaultLayout', {
       content: '<%= collectionName %>Show'
     });
@@ -38,9 +38,9 @@ var <%= collectionName %>Routes = FlowRouter.group({
 <%= collectionName %>Routes.route('/:id/edit', {
   name: '<%= collectionName %>.edit',
   subscriptions: function(params) {
-    this.register('<%= collectionName %>', <%= collectionNameCapitalized %>SubsManager.subscribe('<%= collectionName %>', params.id));
+    this.register('<%= collectionName %>', <%= collectionName %>SubsManager.subscribe('<%= collectionName %>', params.id));
   },
-  action: function() {
+  action() {
     BlazeLayout.render('defaultLayout', {
       content: '<%= collectionName %>Edit'
     });

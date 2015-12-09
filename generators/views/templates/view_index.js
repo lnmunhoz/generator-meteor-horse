@@ -6,14 +6,14 @@ Template.<%= collectionName %>Index.helpers({
 
 });
 
-Template.<%= collectionName %>Index.onCreated(function(){
+Template.<%= collectionName %>Index.onCreated(function() {
 
 });
 
-Template.<%= collectionName %>Index.onRendered(function(){
+Template.<%= collectionName %>Index.onRendered(function() {
 
 });
 
-Template.<%= collectionName %>Index.onDestroyed(function(){
+Template.<%= collectionName %>Index.onDestroyed(function() {
 
 });
