@@ -4,10 +4,21 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
+  constructor: function() {
+    yeoman.generators.Base.apply(this, arguments);
+  },
+  initializing: function() {
+    this.props = {};
+  },
   prompting: function() {
     var done = this.async();
 
-    // Have Yeoman greet the user.
+     // If comes from scaffold, ends here.
+    if (this.options.collectionName) {
+      this.props.collectionName = this.options.collectionName;
+      done();
+    }
+
     this.log(yosay(
       'Welcome to the tremendous ' + chalk.red('generator-meteor-horse') + ' generator!'
     ));
@@ -30,6 +41,7 @@ module.exports = yeoman.generators.Base.extend({
     var collectionName = this.props.collectionName;
     var destPath = 'app/client/views/' + collectionName + '/' + collectionName;
     var content = {
+      keys: this.options.keys,
       collectionName: collectionName,
       collectionNameCapitalized: collectionName[0].toUpperCase() + collectionName.slice(1)
     };

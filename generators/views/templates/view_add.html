@@ -1,4 +1,13 @@
 <template name="<%= collectionName %>Add">
   <h1><%= collectionNameCapitalized %> Add</h1>
+  <% if(keys){ %>
+  {{#autoForm id="insert<%= collectionNameCapitalized %>Form" collection="<%= collectionNameCapitalized %>" type="insert" }}
+    <% keys.forEach(function(key){ %>
+      {{> afQuickField name="<%= key.name %>"}} 
+    <% }) %>
+      <button type="submit">Add</button>
+  {{/autoForm}}
+  <% }else{ %>
   {{> quickForm collection="<%= collectionNameCapitalized %>" id="insert<%= collectionNameCapitalized %>Form" type="insert"}}
+  <% } %>
 </template>
