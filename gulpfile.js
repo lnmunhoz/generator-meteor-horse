@@ -31,10 +31,10 @@ gulp.task('pre-test', function() {
     .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function(cb) {
+gulp.task('test', function(cb) {
   var mochaErr;
 
-  gulp.src('test/**/*.js')
+  gulp.src('test/*.js')
     .pipe(plumber())
     .pipe(mocha({
       reporter: 'spec'

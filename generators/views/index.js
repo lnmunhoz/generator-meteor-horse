@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var pluralize = require('pluralize');
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function() {
@@ -30,7 +31,9 @@ module.exports = yeoman.generators.Base.extend({
 
       this.prompt(prompts, function(props) {
         this.props = props;
-        // To access props later use this.props.someOption;
+
+        // Asserts lowercase and plural name
+        this.props.collectionName = pluralize(this.props.collectionName.toLowerCase());
 
         done();
       }.bind(this));
