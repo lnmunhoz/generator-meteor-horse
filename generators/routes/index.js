@@ -4,28 +4,37 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 
 module.exports = yeoman.generators.Base.extend({
+  constructor: function() {
+    yeoman.generators.Base.apply(this, arguments);
+  },
+  initializing: function() {
+    this.props = {};
+  },
   prompting: function() {
     var done = this.async();
 
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the funkadelic ' + chalk.red('generator-meteor-horse') + ' generator!'
-    ));
-
-    var prompts = [{
-      type: 'input',
-      name: 'collectionName',
-      message: 'Enter the collection name:'
-    }];
-
-    this.prompt(prompts, function(props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
-
-      this.props.name = this.props.collectionName.toLowerCase();
-
+    if (this.options.collectionName) {
+      this.props.collectionName = this.options.collectionName;
       done();
-    }.bind(this));
+    } else {
+      // Have Yeoman greet the user.
+      this.log(yosay(
+        'Welcome to the funkadelic ' + chalk.red('generator-meteor-horse') + ' generator!'
+      ));
+
+      var prompts = [{
+        type: 'input',
+        name: 'collectionName',
+        message: 'Enter the collection name:'
+      }];
+
+      this.prompt(prompts, function(props) {
+        this.props = props;
+        this.props.collectionName = this.props.collectionName.toLowerCase();
+
+        done();
+      }.bind(this));
+    }
   },
 
   writing: function() {

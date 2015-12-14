@@ -105,6 +105,13 @@ module.exports = yeoman.generators.Base.extend({
           collectionName: this.props.name
         }
       });
+    },
+    routes: function() {
+      this.composeWith('meteor-horse:routes', {
+        options: {
+          collectionName: this.props.name
+        }
+      });
     }
   }
 
