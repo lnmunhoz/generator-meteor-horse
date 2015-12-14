@@ -13,28 +13,28 @@ module.exports = yeoman.generators.Base.extend({
   prompting: function() {
     var done = this.async();
 
-     // If comes from scaffold, ends here.
+    // If comes from scaffold, ends here.
     if (this.options.collectionName) {
       this.props.collectionName = this.options.collectionName;
       done();
+    } else {
+      this.log(yosay(
+        'Welcome to the tremendous ' + chalk.red('generator-meteor-horse') + ' generator!'
+      ));
+
+      var prompts = [{
+        type: 'input',
+        name: 'collectionName',
+        message: 'Enter the collection name:'
+      }];
+
+      this.prompt(prompts, function(props) {
+        this.props = props;
+        // To access props later use this.props.someOption;
+
+        done();
+      }.bind(this));
     }
-
-    this.log(yosay(
-      'Welcome to the tremendous ' + chalk.red('generator-meteor-horse') + ' generator!'
-    ));
-
-    var prompts = [{
-      type: 'input',
-      name: 'collectionName',
-      message: 'Enter the collection name:'
-    }];
-
-    this.prompt(prompts, function(props) {
-      this.props = props;
-      // To access props later use this.props.someOption;
-
-      done();
-    }.bind(this));
   },
 
   writing: function() {
