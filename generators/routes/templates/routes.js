@@ -9,7 +9,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
   name: '<%= collectionName %>.index',
   action() {
     BlazeLayout.render('defaultLayout', {
-      content: '<%= collectionName %>Index'
+      main: '<%= collectionName %>Index'
     });
   }
 });
@@ -18,7 +18,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
   name: '<%= collectionName %>.add',
   action() {
     BlazeLayout.render('defaultLayout', {
-      content: '<%= collectionName %>Add'
+      main: '<%= collectionName %>Add'
     });
   }
 });
@@ -30,7 +30,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
   },
   action() {
     BlazeLayout.render('defaultLayout', {
-      content: '<%= collectionName %>Show'
+      main: '<%= collectionName %>Show'
     });
   },
 });
@@ -42,7 +42,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
   },
   action() {
     BlazeLayout.render('defaultLayout', {
-      content: '<%= collectionName %>Edit'
+      main: '<%= collectionName %>Edit'
     });
   },
 });
