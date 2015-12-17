@@ -26,7 +26,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
 <%= collectionName %>Routes.route('/:id/show', {
   name: '<%= collectionName %>.show',
   subscriptions: function(params) {
-    this.register('<%= collectionName %>', <%= collectionName %>SubsManager.subscribe('<%= collectionName %>', params.id));
+    this.register('<%= collectionNameSingular %>', <%= collectionName %>SubsManager.subscribe('<%= collectionNameSingular %>', params.id));
   },
   action() {
     BlazeLayout.render('defaultLayout', {
@@ -38,7 +38,7 @@ var <%= collectionName %>Routes = FlowRouter.group({
 <%= collectionName %>Routes.route('/:id/edit', {
   name: '<%= collectionName %>.edit',
   subscriptions: function(params) {
-    this.register('<%= collectionName %>', <%= collectionName %>SubsManager.subscribe('<%= collectionName %>', params.id));
+    this.register('<%= collectionNameSingular %>', <%= collectionName %>SubsManager.subscribe('<%= collectionNameSingular %>', params.id));
   },
   action() {
     BlazeLayout.render('defaultLayout', {

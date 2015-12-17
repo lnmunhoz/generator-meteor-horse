@@ -1,13 +1,19 @@
 <template name="<%= collectionName %>Edit">
   <h1><%= collectionNameCapitalized %> Edit</h1>
-  <% if(keys){ %>
-  {{#autoForm id="update<%= collectionNameCapitalized %>Form" collection="<%= collectionNameCapitalized %>" type="update" }}
-    <% keys.forEach(function(key){ %>
-      {{> afQuickField name="<%= key.name %>"}} 
-    <% }) %>
-      <button type="submit">Add</button>
-  {{/autoForm}}
-  <% }else{ %>
-  {{> quickForm collection="<%= collectionNameCapitalized %>" id="update<%= collectionNameCapitalized %>Form" type="update"}}
-  <% } %>
+  {{#if subsReady '<%= collectionNameSingular %>'}}
+    {{#with <%= collectionNameSingular %>}}
+      <% if(keys){ %>
+      {{#autoForm id="update<%= collectionNameCapitalized %>Form" doc=this collection="<%= collectionNameCapitalized %>" type="update" }}
+        <% keys.forEach(function(key){ %>
+          {{> afQuickField name="<%= key.name %>"}} 
+        <% }) %>
+          <button type="submit">Edit</button>
+      {{/autoForm}}
+      <% }else{ %>
+      {{> quickForm collection="<%= collectionNameCapitalized %>" id="update<%= collectionNameCapitalized %>Form" type="update"}}
+      <% } %>
+    {{/with}}
+  {{else}}
+    Loading...
+  {{/if}}
 </template>

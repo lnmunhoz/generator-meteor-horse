@@ -46,6 +46,7 @@ module.exports = yeoman.generators.Base.extend({
     var content = {
       keys: this.options.keys,
       collectionName: collectionName,
+      collectionNameSingular: pluralize(collectionName, 1),
       collectionNameCapitalized: collectionName[0].toUpperCase() + collectionName.slice(1)
     };
 
