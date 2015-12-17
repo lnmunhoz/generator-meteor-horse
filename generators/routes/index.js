@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var pluralize = require('pluralize');
+var contentForTpl = require('../../lib/util').contentForTpl;
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function() {
@@ -15,7 +16,7 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
 
     if (this.options.collectionName) {
-      this.props.collectionName = pluralize(this.options.collectionName.toLowerCase());
+      this.props.collectionName = this.options.collectionName;
       done();
     } else {
       // Have Yeoman greet the user.
@@ -31,21 +32,14 @@ module.exports = yeoman.generators.Base.extend({
 
       this.prompt(prompts, function(props) {
         this.props = props;
-        this.props.collectionName = pluralize(this.props.collectionName.toLowerCase());
-
         done();
       }.bind(this));
     }
   },
 
   writing: function() {
-    var collectionName = this.props.collectionName;
-    var destPath = 'app/lib/routes/' + collectionName + '_routes.js';
-    var content = {
-      collectionName: collectionName,
-      collectionNameSingular: pluralize(collectionName, 1),
-      collectionNameCapitalized: collectionName[0].toUpperCase() + collectionName.slice(1)
-    };
+    var content = contentForTpl(this.props.collectionName);
+    var destPath = 'app/lib/routes/' + content.collectionName + '_routes.js';
     this.fs.copyTpl(this.templatePath('routes.js'), this.destinationPath(destPath), content);
   }
 });

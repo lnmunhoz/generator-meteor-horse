@@ -22,10 +22,6 @@ module.exports = yeoman.generators.Base.extend({
 
       this.prompt(prompts, function(props) {
         this.props = props;
-
-        // Asserts lowercase and plural name
-        this.props.name = pluralize(this.props.name.toLowerCase());
-
         done();
       }.bind(this));
     },

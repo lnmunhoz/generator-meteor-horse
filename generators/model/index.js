@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var pluralize = require('pluralize');
+var contentForTpl = require('../../lib/util').contentForTpl;
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function() {
@@ -16,7 +17,7 @@ module.exports = yeoman.generators.Base.extend({
     var done = this.async();
 
     if (this.options.collectionName) {
-      this.props.name = this.options.collectionName;
+      this.props.collectionName = this.options.collectionName;
       done();
     } else {
       // Have Yeoman greet the user.
@@ -26,16 +27,12 @@ module.exports = yeoman.generators.Base.extend({
 
       var prompts = [{
         type: 'input',
-        name: 'name',
+        name: 'collectionName',
         message: 'Enter the collection name:'
       }];
 
       this.prompt(prompts, function(props) {
         this.props = props;
-
-        // Asserts lowercase and plural name
-        this.props.name = pluralize(this.props.name.toLowerCase());
-
         done();
       }.bind(this));
     }
@@ -108,16 +105,9 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function() {
-    var name = this.props.name;
-    var nameCapitalized = name[0].toUpperCase() + name.slice(1);
-    var nameSingularCapitalized = pluralize(nameCapitalized, 1);
-    var content = {
-      name: name,
-      nameCapitalized: nameCapitalized,
-      nameSingularCapitalized: nameSingularCapitalized,
-      keys: this.props.keys
-    };
+    var content = contentForTpl(this.props.collectionName);
+    content.keys = this.props.keys;
 
-    this.fs.copyTpl(this.templatePath('model.js'), this.destinationPath('app/lib/models/' + this.props.name + '.js'), content);
+    this.fs.copyTpl(this.templatePath('model.js'), this.destinationPath('app/lib/models/' + content.collectionName + '.js'), content);
   }
 });

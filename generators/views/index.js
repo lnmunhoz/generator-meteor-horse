@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var pluralize = require('pluralize');
+var contentForTpl = require('../../lib/util').contentForTpl;
 
 module.exports = yeoman.generators.Base.extend({
   constructor: function() {
@@ -31,24 +32,16 @@ module.exports = yeoman.generators.Base.extend({
 
       this.prompt(prompts, function(props) {
         this.props = props;
-
-        // Asserts lowercase and plural name
-        this.props.collectionName = pluralize(this.props.collectionName.toLowerCase());
-
         done();
       }.bind(this));
     }
   },
 
   writing: function() {
-    var collectionName = this.props.collectionName;
-    var destPath = 'app/client/views/' + collectionName + '/' + collectionName;
-    var content = {
-      keys: this.options.keys,
-      collectionName: collectionName,
-      collectionNameSingular: pluralize(collectionName, 1),
-      collectionNameCapitalized: collectionName[0].toUpperCase() + collectionName.slice(1)
-    };
+    var content = contentForTpl(this.props.collectionName);
+    content.keys = this.options.keys;
+
+    var destPath = 'app/client/views/' + content.collectionName + '/' + content.collectionName;
 
     // Add
     this.fs.copyTpl(this.templatePath('view_add.html'), this.destinationPath(destPath + '_add.html'), content);
