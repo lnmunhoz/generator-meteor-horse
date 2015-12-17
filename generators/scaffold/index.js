@@ -112,6 +112,13 @@ module.exports = yeoman.generators.Base.extend({
           collectionName: this.props.name
         }
       });
+    },
+    publications: function() {
+      this.composeWith('meteor-horse:publications', {
+        options: {
+          collectionName: this.props.name
+        }
+      });
     }
   }
 
