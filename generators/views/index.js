@@ -2,7 +2,6 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
-var pluralize = require('pluralize');
 var contentForTpl = require('../../lib/util').contentForTpl;
 
 module.exports = yeoman.generators.Base.extend({
