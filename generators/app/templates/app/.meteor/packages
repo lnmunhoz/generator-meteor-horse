@@ -16,9 +16,10 @@ standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
-autopublish             # Publish all data to the clients (for prototyping)
-insecure                # Allow all DB writes from clients (for prototyping)
+# autopublish             # Publish all data to the clients (for prototyping)
+# insecure                # Allow all DB writes from clients (for prototyping)
 
+check                          # https://atmospherejs.com/meteor/check
 
 kadira:flow-router             # https://github.com/kadirahq/flow-router
 kadira:blaze-layout            # https://github.com/kadirahq/blaze-layout
@@ -29,12 +30,13 @@ aldeed:simple-schema           # https://github.com/aldeed/meteor-simple-schema
 aldeed:delete-button           # https://github.com/aldeed/meteor-delete-button
 aldeed:tabular                 # https://github.com/aldeed/meteor-tabular
 
+meteorhacks:unblock            # https://github.com/meteorhacks/unblock
 meteorhacks:fast-render        # https://github.com/kadirahq/fast-render
 meteorhacks:subs-manager       # https://github.com/kadirahq/subs-manager
 
-
 tomwasd:history-polyfill       # https://github.com/tomwasd/history-polyfill/
-
+arillo:flow-router-helpers     # https://github.com/arillo/meteor-flow-router-helpers/
+reywood:publish-composite
 mdg:validated-method
 dburles:collection-helpers
 ahref:flow-router-breadcrumb
