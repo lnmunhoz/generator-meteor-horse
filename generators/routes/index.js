@@ -38,7 +38,7 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function() {
     var content = contentForTpl(this.props.collectionName);
-    var destPath = 'app/lib/routes/' + content.collectionName + '_routes.js';
+    var destPath = 'lib/routes/' + content.collectionName + '_routes.js';
     this.fs.copyTpl(this.templatePath('routes.js'), this.destinationPath(destPath), content);
   }
 });

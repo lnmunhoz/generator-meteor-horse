@@ -40,7 +40,7 @@ module.exports = yeoman.generators.Base.extend({
     var content = contentForTpl(this.props.collectionName);
     content.keys = this.options.keys;
 
-    var destPath = 'app/client/views/' + content.collectionName + '/' + content.collectionName;
+    var destPath = 'client/views/' + content.collectionName + '/' + content.collectionName;
 
     // Add
     this.fs.copyTpl(this.templatePath('view_add.html'), this.destinationPath(destPath + '_add.html'), content);

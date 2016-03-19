@@ -107,6 +107,6 @@ module.exports = yeoman.generators.Base.extend({
     var content = contentForTpl(this.props.collectionName);
     content.keys = this.props.keys;
 
-    this.fs.copyTpl(this.templatePath('model.js'), this.destinationPath('app/lib/models/' + content.collectionName + '.js'), content);
+    this.fs.copyTpl(this.templatePath('model.js'), this.destinationPath('lib/models/' + content.collectionName + '.js'), content);
   }
 });

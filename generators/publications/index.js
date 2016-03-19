@@ -1,7 +1,5 @@
 'use strict';
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
 var contentForTpl = require('../../lib/util').contentForTpl;
 
 module.exports = yeoman.generators.Base.extend({
@@ -34,7 +32,7 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function() {
     var content = contentForTpl(this.props.collectionName);
-    var destinationPath = 'app/server/publications/' + content.collectionName + '_publications.js';
+    var destinationPath = 'server/publications/' + content.collectionName + '_publications.js';
     this.fs.copyTpl(this.templatePath('publications.js'), this.destinationPath(destinationPath), content);
   }
 });
